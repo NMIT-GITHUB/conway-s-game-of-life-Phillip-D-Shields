@@ -21,11 +21,13 @@ class GameOfLife {
   }
 
   drawBoard() {
-    return this.board.map((row) => row.join(" ") + "\n").join("");
+    const drawnBoard = this.board.map((row) => row.join(" ") + "\n").join("");
+    console.log(drawnBoard);
   }
 
   updateBoard() {
-
+    let nextBoard = [...Array(10)].map((row) => Array(10));
+    
     for (let i = 0; i < this.board.length; i++) {
       for (let j = 0; j < this.board.length; j++) {
         let count = 0;
@@ -48,23 +50,27 @@ class GameOfLife {
             count += this.board[x[0]][x[1]];
           });
         }
-        if (count === 2) {
-          this.board[i][j] = 2;
-        } else if (count === 3) {
-          this.board[i][j] = 3;
-        } else if (count === 4) {
-          this.board[i][j] = 4;
-        } else {
-          this.board[i][j] = 0;
-        }
+        // if (count === 2) {
+        //   nextBoard[i][j] = 2;
+        // } else if (count === 3) {
+        //   nextBoard[i][j] = 3;
+        // } else if (count === 4) {
+        //   nextBoard[i][j] = 4;
+        // } else {
+        //   nextBoard[i][j] = 0;
+        // }
+
+        // show count in each square to make sure env is calculated correctly
+        nextBoard[i][j] = count;
       }
     }
-    return this.board
+ 
+    return this.board = nextBoard
   }
 }
 
 let test = new GameOfLife();
-console.log(test.buildBoard());
-console.log(test.drawBoard());
-console.log(test.updateBoard());
-console.log(test.drawBoard());
+test.buildBoard();
+test.drawBoard()
+test.updateBoard();
+test.drawBoard();
