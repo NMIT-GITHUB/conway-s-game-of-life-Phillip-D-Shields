@@ -103,6 +103,7 @@ const createUpdatedBoard = (input) => {
 
   for (let i = 0; i < input.board.length; i++) {
     for (let j = 0; j < input.board.length; j++) {
+      // add logic to identify if current cell has value of 1 or 0
       newBoard[i][j] = checkEnvOfCell(input,i,j);
     }
   }
