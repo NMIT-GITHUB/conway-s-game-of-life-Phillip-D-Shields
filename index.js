@@ -104,7 +104,15 @@ const createUpdatedBoard = (input) => {
   for (let i = 0; i < input.board.length; i++) {
     for (let j = 0; j < input.board.length; j++) {
       // add logic to identify if current cell has value of 1 or 0
-      newBoard[i][j] = checkEnvOfCell(input,i,j);
+      let count = checkEnvOfCell(input,i,j);
+
+      if (input.board[i][j] === 1) {
+        (count > 1 && count < 4) ? newBoard[i][j] = 1 : newBoard[i][j] = 0;
+      } else if (input.board[i][j] === 0 && count === 3) {
+        newBoard[i][j] = 1;
+      } else {
+        newBoard[i][j] = 0;
+      }
     }
   }
   return input.board = newBoard;
@@ -142,10 +150,10 @@ const envYAxisCheck = (x) => {
 
 
 
-// let test = new GameOfLifeBoard();
-// console.log(test);
+let test = new GameOfLifeBoard();
+console.log(test);
 
-// console.log(randomFillBoard(test));
-// illustrateBoard(test)
-// createUpdatedBoard(test);
-// illustrateBoard(test)
+console.log(randomFillBoard(test));
+illustrateBoard(test)
+createUpdatedBoard(test);
+illustrateBoard(test)
