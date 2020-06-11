@@ -8,7 +8,6 @@ class GameOfLifeBoard {
 }
 
 const randomFillBoard = (input) => {
-  console.log(input.board);
 
   for (let i = 0; i < input.board.length; i++) {
     for (let j = 0; j < input.board.length; j++) {
@@ -22,7 +21,8 @@ const randomFillSquare = () => (Math.floor(Math.random() * 10) >= 6 ? 1 : 0);
 
 const illustrateBoard = (input) => {
   const visualBoard = input.board.map((row) => row.join(' ') + '\n').join('');
-  console.log(visualBoard)
+  return console.log(visualBoard);
+  
 }
 
 const createUpdatedBoard = (input) => {
@@ -80,7 +80,7 @@ const envYAxisCheck = (x) => {
 let test = new GameOfLifeBoard();
 console.log(test);
 
-console.log(randomFillBoard(test));
-illustrateBoard(test)
+randomFillBoard(test);
+illustrateBoard(test);
 createUpdatedBoard(test);
-illustrateBoard(test)
+illustrateBoard(test);
